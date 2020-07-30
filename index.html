@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vue 练习</title>
+</head>
+
+<body>
+  <div id="root">
+    <h4>{{title}}</h4>
+    <p>{{description}}</p>
+    <p v-text="title"></p>
+    <div>
+      <p>{{catalogue.ChapterOne}}</p>
+      <p>{{catalogue.ChapterTwo}}</p>
+    </div>
+  </div>
+
+</body>
+<script src="./js/fvue.js"></script>
+<script src="./js/compiler.js"></script>
+<script>
+  let fvue = new FVue({
+    el: '#root',
+    data: {
+      title: '论如何成功',
+      description: '一本教你成功的书',
+      catalogue: {
+        ChapterOne: '失败的原因',
+        ChapterTwo: '该如何努力'
+      }
+    }
+  })
+  fvue.catalogue.ChapterOne = 'How to get success'
+  console.log(fvue.$data)
+</script>
+
+</html>
