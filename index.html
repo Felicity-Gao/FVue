@@ -9,32 +9,41 @@
 
 <body>
   <div id="root">
-    <h4>{{title}}</h4>
+    <h1>{{title}}</h1>
+    <p v-html="htmlStr"></p>
     <p>{{description}}</p>
     <p v-text="title"></p>
     <div>
       <p>{{catalogue.ChapterOne}}</p>
       <p>{{catalogue.ChapterTwo}}</p>
     </div>
+    <input type="text" v-model="catalogue.ChapterOne">
+    <button v-on:click="handleClick">on按钮</button>
+    <button @click="handleClick">@按钮</button>
   </div>
 
 </body>
 <script src="./js/fvue.js"></script>
 <script src="./js/compiler.js"></script>
+<script src="./js/observer.js"></script>
 <script>
   let fvue = new FVue({
     el: '#root',
     data: {
       title: '论如何成功',
       description: '一本教你成功的书',
+      htmlStr: '<h2>小小胖著</h2>',
       catalogue: {
         ChapterOne: '失败的原因',
         ChapterTwo: '该如何努力'
       }
+    },
+    methods: {
+      handleClick() {
+        console.log('按钮点击了')
+      }
     }
   })
-  fvue.catalogue.ChapterOne = 'How to get success'
-  console.log(fvue.$data)
 </script>
 
 </html>
