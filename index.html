@@ -17,7 +17,7 @@
       <p>{{catalogue.ChapterOne}}</p>
       <p>{{catalogue.ChapterTwo}}</p>
     </div>
-    <input type="text" v-model="catalogue.ChapterOne">
+    <input type="text" v-model="title">
     <button v-on:click="handleClick">on按钮</button>
     <button @click="handleClick">@按钮</button>
   </div>
@@ -40,7 +40,7 @@
     },
     methods: {
       handleClick() {
-        console.log('按钮点击了')
+        this.title = 'wwww'
       }
     }
   })

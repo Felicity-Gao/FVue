@@ -85,15 +85,20 @@ const compilerUtil = {
   },
   text(node, expr, vm) {
     node.textContent = this.getValue(expr, vm)
+    new Watcher(vm, expr, function (val) {
+      node.textContent = val
+    })
   },
   html(node, expr, vm) {
     node.innerHTML = vm.$data[expr]
   },
   model(node, expr, vm) {
     node.value = this.getValue(expr, vm)
+    new Watcher(vm, expr, function (val) {
+      node.value = val
+    })
     node.addEventListener('input', (e) => {
       this.setValue(expr, vm, e.target.value)
-      console.log(vm)
     })
   },
   on(node, expr, vm, eventName) {
